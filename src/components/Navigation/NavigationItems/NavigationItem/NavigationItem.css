@@ -1,0 +1,30 @@
+.NavigationItem{
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.NavigationItem a {
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    padding: 16px 10px;
+    border-bottom: 4px solid transparent;
+    box-sizing: border-box;
+    display: block;
+    transition: all 1s
+}
+.NavigationItem a:hover,
+.NavigationItem a:active,
+.NavigationItem a.active {
+    background-color: orange;
+    border-bottom: 4px solid rgb(1, 205, 219);
+    color: white;
+}
+
+/* @media (max-width: 980px){
+    .NavigationItem a{
+        padding: 8px 6px ;
+    }
+} */

@@ -1,0 +1,41 @@
+.ContactData {
+    padding: 5px;
+    
+    width: 100%;
+    height: 100%;
+    background-color: bisque;
+
+} 
+.inputs{
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    margin: 5px auto;
+}
+input {
+
+    border: 1px solid black;
+    height: 25px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding-left: 3px;
+    color: black;
+}
+
+.buts{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+   
+}
+button{
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    color: white;
+}
+.buts .order{
+    background-color: rgb(9, 114, 15);
+}
+.buts .Cansle{
+    background-color: rgb(196, 12, 12) ; 
+}
