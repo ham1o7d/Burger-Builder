@@ -1,6 +1,7 @@
 import React from 'react';
 import './ContactData.css' ;
 import axios from '../../../../axios-orders' ;
+import firebaseDb from '../../../../firebase' ;
 import SpinnerLoader from '../../../UI/spinnerLoader/spinnerLoader';
 class ContactData extends React.Component {
     state = {
@@ -24,28 +25,33 @@ class ContactData extends React.Component {
 
 
         this.setState( {loading: true} )
+        // console.log(this.props.ingredients);
+        // console.log(this.props.price);
 
-         const order = {
-             ingredients: this.state.ingredients,
-             price: this.state.totalPrice,
-             customerData: this.customerData
+        const order = {
+            ingredients: this.props.ingredients,
+            price: this.props.price,
+            customerData: this.customerData
          }
- 
-         axios.post('/orders.json', order)
-         .then(response => { 
-             console.log(response);
-             this.setState( {loading: false, loading2: true, purchasing: false} ) ;
-            })
-         .catch(error => {
-             console.error(error);
-             this.setState( {loading: false, purchasing: false} ) ;
+         console.log('oreder', order );
 
-         }) ;
+         firebaseDb.database().ref().push(this.customerData, (err) => {console.error(err)}) ;
+         this.setState( {loading: false} )
+
+        // axios.post('/orders.json', order)
+        // .then(response => { 
+        //     console.log('response => ',response);
+        //     this.setState( {loading: false, loading2: true, purchasing: false} ) ;
+        // })
+        // .catch(error => {
+        //     console.error(error);
+        //     this.setState( {loading: false, purchasing: false} ) ;
+
+        // }) ;
      }
        
      handleChange = (event) => {
 
-        
         switch(event.target.name) {
             case 'name': this.customerData.name= event.target.value;
             break;
@@ -61,6 +67,7 @@ class ContactData extends React.Component {
         // this.setState({customerData: customerData}) ;
         // console.log('----',this.state.customerData) ;
       }
+
 
     render () {
         let form = (

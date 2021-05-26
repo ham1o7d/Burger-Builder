@@ -17,22 +17,28 @@ import WithErrorHandler from '../../hoc/WithErrorHandler/WithErrorHandler' ;
     }
 
 class BurgerBuilder extends React.Component {
-
+    
     state = {
-        ingredients: null,
+        ingredients: {
+            bacon: 0,
+            cheese:0,
+            meat: 0,
+            salad: 0
+        },
+        // ingredients: null,
         totalPrice: 4,
         purchasing: false,
         loading: false,
         error: true
     }
-    componentDidMount(){
-        axios.get('https://react-my-burger-60c85-default-rtdb.firebaseio.com/ingredients.json')
-        .then(response => {
-            this.setState({ingredients: response.data});
-        }).catch(error => {
-            this.setState({error: true})
-        })
-    }
+    // componentDidMount(){
+    //     axios.get('https://react-my-burger-60c85-default-rtdb.firebaseio.com/ingredients.json')
+    //     .then(response => {
+    //         this.setState({ingredients: response.data});
+    //     }).catch(error => {
+    //         this.setState({error: true})
+    //     })
+    // }
     addIngredientHandler = (type) => {
          //// ingredients update
         const oldCount = this.state.ingredients[type] ;
